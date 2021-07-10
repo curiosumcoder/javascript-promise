@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise</title>
+</head>
+
+<body>
+    <script>
+        // const p = new Promise((resolve, reject) => {
+        //     try {
+        //         // Aquí se hace mi trabajo
+        //         console.log('Ejecutando promise ...');
+
+        //         throw new Error('Se dió un error');
+
+        //         setTimeout(() => {
+        //             resolve('La ejecución fué satisfacoria.');
+        //         }, 5000);
+        //     } catch (error) {
+        //         reject(error);
+        //     }
+        // });
+
+        // p.then(r => {
+        //     console.log(`Fulfilled: ${r}`);
+        // }).catch(e => {
+        //     console.log(`Rejected: ${e}`);
+        // });
+
+        const sumar = function (a,b) {
+            return new Promise((resolve, reject) => {
+                try {
+                    console.log('Ejecutando suma ..');
+                    let result = a + b;
+                    resolve(result);     
+                } catch (error) {
+                    reject(error)
+                }
+            });
+        }
+
+        sumar(1,2).then(r => {
+            console.log(`Fulfilled: ${r}`);
+        }).catch(e => {
+            console.log(`Rejected: ${e}`);
+        });
+
+        (async () => { 
+            let s = await sumar(2,3);
+            console.log(s);
+        })();
+
+    </script>
+</body>
+
+</html>
